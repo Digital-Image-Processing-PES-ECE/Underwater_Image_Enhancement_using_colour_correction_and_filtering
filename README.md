@@ -25,13 +25,13 @@ Link: https://www.kaggle.com/datasets/larjeck/uieb-dataset-raw
 2. Parnika Chilukuri PES1UG22EC189
 
 ### Steps:
-1. Clone Repository
+1. Clone Repository:
  git@github.com:Pragati-Ramesh/Underwater_Image_Enhancement_using_colour_correction_and_filtering.git
 
-2. Install Dependencies
+2. Install Dependencies:
  Install the Image processing toolbox in MATLAB
 
-3. Run the Code
+3. Run the Code:
  Run the code on MATLAB platform.
 
 ### Outputs:
