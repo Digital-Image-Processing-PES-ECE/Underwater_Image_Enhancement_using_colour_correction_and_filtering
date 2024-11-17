@@ -1,1 +1,0 @@
-This folder contains all input images used in the project.
