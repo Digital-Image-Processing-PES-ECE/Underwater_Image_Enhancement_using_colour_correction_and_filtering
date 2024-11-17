@@ -26,7 +26,7 @@ Link: https://www.kaggle.com/datasets/larjeck/uieb-dataset-raw
 
 ### Steps:
 1. Clone Repository
-
+ git@github.com:Pragati-Ramesh/Underwater_Image_Enhancement_using_colour_correction_and_filtering.git
 
 2. Install Dependencies
  Install the Image processing toolbox in MATLAB
