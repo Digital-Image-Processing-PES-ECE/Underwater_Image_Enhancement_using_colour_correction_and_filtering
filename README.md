@@ -39,7 +39,7 @@ Link: https://www.kaggle.com/datasets/larjeck/uieb-dataset-raw
 
 ### References:
 1. - MATLAB Documentation
-2. - Digital Image Processing by Gonzales and Wood
+2. - Gonzalez, R.C., & Woods, R.E. Digital Image Processing, 4th Edition, Pearson, 2018
    
 ### Limitations and Future Work:
 The results indicate there is still potential for further improvement, 
