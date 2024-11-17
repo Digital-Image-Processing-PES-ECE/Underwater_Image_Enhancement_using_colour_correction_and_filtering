@@ -21,7 +21,15 @@ function uiqm = calculate_uiqm(image)
     uiqm = c1 * uicm + c2 * uism + c3 * uiconm;
 end
 
+% PSNR Calculation Function
+function psnr_value = calculate_psnr(original, processed)
+    mse = mean((double(original(:)) - double(processed(:))).^2);
+    psnr_value = 10 * log10(255^2 / mse);
+end
+
 img = imread("Your_input_image");
+
+original_psnr_reference = double(img);
 
 %% 1. White Balance Calculation
 img_double = double(img);
@@ -46,13 +54,14 @@ subplot(1,2,2)
 imshow(white_balanced_img);
 title('White Balanced Image');
 
-% Evaluate White Balancing (UIQM)
 x = calculate_uiqm(white_balanced_img);
-disp('UIQM for White Balanced Image');
+psnr_white_balanced = calculate_psnr(original_psnr_reference, white_balanced_img);
+disp('UIQM for White Balanced Image:');
 disp(x);
+disp('PSNR for White Balanced Image:');
+disp(psnr_white_balanced);
 
-%% 2. Apply Enhancement Techniques after White Balancing
-
+%% 2. High Contrast and Edge Sharpening
 R = white_balanced_img(:,:,1);
 G = white_balanced_img(:,:,2);
 B = white_balanced_img(:,:,3);
@@ -84,8 +93,11 @@ imshow(final_img);
 title('High Contrast and Edge Sharpened');
 
 x = calculate_uiqm(final_img);
-disp('UIQM for High Contrast and Edge Sharpened Image');
+psnr_final = calculate_psnr(original_psnr_reference, final_img);
+disp('UIQM for High Contrast and Edge Sharpened Image:');
 disp(x);
+disp('PSNR for High Contrast and Edge Sharpened Image:');
+disp(psnr_final);
 
 %% 3. Dehazing
 lab_img = rgb2lab(white_balanced_img);
@@ -104,8 +116,11 @@ imshow(dehazed_img);
 title('Dehazed Image');
 
 x = calculate_uiqm(dehazed_img);
-disp('UIQM for Dehazed Image');
+psnr_dehazed = calculate_psnr(original_psnr_reference, dehazed_img);
+disp('UIQM for Dehazed Image:');
 disp(x);
+disp('PSNR for Dehazed Image:');
+disp(psnr_dehazed);
 
 %% 4. DCP Enhancement
 lab_img = rgb2lab(white_balanced_img);
@@ -124,8 +139,11 @@ imshow(dcp_img);
 title('DCP Enhanced Image');
 
 x = calculate_uiqm(dcp_img);
-disp('UIQM for DCP Enhanced Image');
+psnr_dcp = calculate_psnr(original_psnr_reference, dcp_img);
+disp('UIQM for DCP Enhanced Image:');
 disp(x);
+disp('PSNR for DCP Enhanced Image:');
+disp(psnr_dcp);
 
 %% 5. Red Channel Compensation
 img_double = double(white_balanced_img);
@@ -143,8 +161,11 @@ imshow(red_compensated_img);
 title('Red Channel Compensated Image');
 
 x = calculate_uiqm(red_compensated_img);
-disp('UIQM for Red Channel Compensated Image');
+psnr_red_compensated = calculate_psnr(original_psnr_reference, red_compensated_img);
+disp('UIQM for Red Channel Compensated Image:');
 disp(x);
+disp('PSNR for Red Channel Compensated Image:');
+disp(psnr_red_compensated);
 
 %% 6. Contrast Enhancement
 lab_img = rgb2lab(white_balanced_img);
@@ -163,5 +184,9 @@ imshow(contrast_enhanced_img);
 title('Contrast Enhanced Image');
 
 x = calculate_uiqm(contrast_enhanced_img);
-disp('UIQM for Contrast Enhanced Image');
+psnr_contrast_enhanced = calculate_psnr(original_psnr_reference, contrast_enhanced_img);
+disp('UIQM for Contrast Enhanced Image:');
 disp(x);
+disp('PSNR for Contrast Enhanced Image:');
+disp(psnr_contrast_enhanced);
+
