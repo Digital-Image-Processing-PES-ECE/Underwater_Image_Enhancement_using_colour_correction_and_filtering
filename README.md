@@ -35,8 +35,7 @@ Link: https://www.kaggle.com/datasets/larjeck/uieb-dataset-raw
  Run the code on MATLAB platform.
 
 ### Outputs:
-* Important intermediate steps
-* Final output images 
+![Results image:](outputs/output_img.png)
 
 ### References:
 1. - MATLAB Docum3entation
