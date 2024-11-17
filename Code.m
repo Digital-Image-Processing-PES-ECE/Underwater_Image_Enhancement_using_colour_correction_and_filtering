@@ -21,7 +21,7 @@ function uiqm = calculate_uiqm(image)
     uiqm = c1 * uicm + c2 * uism + c3 * uiconm;
 end
 
-img = imread("C:\Users\praga\OneDrive\Desktop\SEM 5\DIP Lab\DIP-OpenCV-Learning\dip-venv\Project\InputImages\15704.png");
+img = imread("Your_input_image");
 
 %% 1. White Balance Calculation
 img_double = double(img);
