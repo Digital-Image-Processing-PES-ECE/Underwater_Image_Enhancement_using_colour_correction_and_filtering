@@ -38,7 +38,7 @@ Link: https://www.kaggle.com/datasets/larjeck/uieb-dataset-raw
 ![Results image:](outputs/output_img.png)
 
 ### References:
-1. - MATLAB Docum3entation
+1. - MATLAB Documentation
 2. - Digital Image Processing by Gonzales and Wood
    
 ### Limitations and Future Work:
