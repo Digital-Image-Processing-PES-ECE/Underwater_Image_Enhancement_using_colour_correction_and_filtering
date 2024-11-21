@@ -27,7 +27,7 @@ function psnr_value = calculate_psnr(original, processed)
     psnr_value = 10 * log10(255^2 / mse);
 end
 
-img = imread("Your_input_image");
+img = imread("C:\Users\praga\OneDrive\Desktop\SEM 5\DIP Lab\DIP-OpenCV-Learning\dip-venv\Project\InputImages\116_img_.png");
 
 original_psnr_reference = double(img);
 
@@ -93,13 +93,13 @@ imshow(final_img);
 title('High Contrast and Edge Sharpened');
 
 x = calculate_uiqm(final_img);
-psnr_final = calculate_psnr(original_psnr_reference, final_img);
+psnr_final = calculate_psnr(double(white_balanced_img), final_img);
 disp('UIQM for High Contrast and Edge Sharpened Image:');
 disp(x);
 disp('PSNR for High Contrast and Edge Sharpened Image:');
 disp(psnr_final);
 
-%% 3. Dehazing
+%% 3. Dehazing or Contrast Enhancement
 lab_img = rgb2lab(white_balanced_img);
 L = lab_img(:,:,1);
 L = histeq(L / 100) * 100;
@@ -116,7 +116,7 @@ imshow(dehazed_img);
 title('Dehazed Image');
 
 x = calculate_uiqm(dehazed_img);
-psnr_dehazed = calculate_psnr(original_psnr_reference, dehazed_img);
+psnr_dehazed = calculate_psnr(double(white_balanced_img), dehazed_img);
 disp('UIQM for Dehazed Image:');
 disp(x);
 disp('PSNR for Dehazed Image:');
@@ -139,7 +139,7 @@ imshow(dcp_img);
 title('DCP Enhanced Image');
 
 x = calculate_uiqm(dcp_img);
-psnr_dcp = calculate_psnr(original_psnr_reference, dcp_img);
+psnr_dcp = calculate_psnr(double(white_balanced_img), dcp_img);
 disp('UIQM for DCP Enhanced Image:');
 disp(x);
 disp('PSNR for DCP Enhanced Image:');
@@ -161,32 +161,8 @@ imshow(red_compensated_img);
 title('Red Channel Compensated Image');
 
 x = calculate_uiqm(red_compensated_img);
-psnr_red_compensated = calculate_psnr(original_psnr_reference, red_compensated_img);
+psnr_red_compensated = calculate_psnr(double(white_balanced_img), red_compensated_img);
 disp('UIQM for Red Channel Compensated Image:');
 disp(x);
 disp('PSNR for Red Channel Compensated Image:');
 disp(psnr_red_compensated);
-
-%% 6. Contrast Enhancement
-lab_img = rgb2lab(white_balanced_img);
-L = lab_img(:,:,1);
-L_eq = histeq(L / 100) * 100;
-lab_img(:,:,1) = L_eq;
-
-contrast_enhanced_img = lab2rgb(lab_img);
-
-figure;
-subplot(1,2,1)
-imshow(white_balanced_img);
-title('White Balanced Image');
-subplot(1,2,2)
-imshow(contrast_enhanced_img);
-title('Contrast Enhanced Image');
-
-x = calculate_uiqm(contrast_enhanced_img);
-psnr_contrast_enhanced = calculate_psnr(original_psnr_reference, contrast_enhanced_img);
-disp('UIQM for Contrast Enhanced Image:');
-disp(x);
-disp('PSNR for Contrast Enhanced Image:');
-disp(psnr_contrast_enhanced);
-
